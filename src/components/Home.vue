@@ -5,7 +5,7 @@
         <MHeader :back="true">首页</MHeader>
         <!--轮播图渲染到页面-->
         <div class="content">
-            <Swiper></Swiper>
+            <Swiper :swiperSlides="sliders"></Swiper>
         </div>
     </div>
 </template>
@@ -13,9 +13,14 @@
     import MHeader from '../base/MHeader.vue';
     /*引入轮播图组件 */
     import Swiper from '../base/Swiper.vue';
+    import {getSliders} from "../api";//api下的index.js，默认不用写全
     export default {
+       async created(){
+          let {data:sliders}= await getSliders();//页面加载完成发送请求
+          this.sliders=sliders;
+        },
         data() {
-            return {}
+            return {sliders:[]}
         },
         methods: {},
         computed: {},
