@@ -21,8 +21,10 @@ export default new Router({
       component:Add
     },
     {
-      path: '/detail',
-      component:Detail
+      // /detail/1 路径参数，后面的:bid代表参数必须有但是值是活的，可以随机。
+      path: '/detail/:bid',
+      component:Detail,
+      name:'detail'
     },
     {
       path:'/collect',

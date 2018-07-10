@@ -5,15 +5,21 @@
        </MHeader>
        <div class="content">
           <ul>
-             <li v-for="(book,key) in books">
+            <!--循环组件要使用key-->
+            <!--使用params传参必须给路由加个name-->
+            <!--:to="{name:'detail',params:{bid:book.bookId}}"--><!--和:to="{path:'/detail/book.bookId'}-->
+            <!--当传递的值是个字符串的时候，可以直接to=""或是:to="{path:''}",如果需要传递变量的话，需要使用params-->
+            <!--tag属性的值表示router-link在页面渲染成什么元素，默认是a-->
+             <router-link v-for="(book,key) in books" :to="{name:'detail',params:{bid:book.bookId}}" tag="li">
                 <img :src="book.bookCover" alt=""/>
                 <div>
                    <h4>{{book.bookName}}</h4>
                    <p>{{book.bookInfo}}</p>
                    <b>{{book.bookPrice}}</b>
-                   <button @click="remove(book.bookId)">删除</button>
+                   <button @click.stop="remove(book.bookId)">删除</button>
+                   <!--阻止时间冒泡行为，防止点击按钮导致跳转-->
                 </div>
-             </li>
+             </router-link>
           </ul>
        </div>
     </div>
