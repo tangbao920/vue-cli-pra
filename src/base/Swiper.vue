@@ -13,10 +13,36 @@
       data() {
         return {
           swiperOption: {
-            autoplay: 3500,
-            setWrapperSize :true,
-            pagination : '.swiper-pagination',
-            observeParents:true,
+            initialSlide: 0,
+            loop: true,
+            speed: 400,
+            autoplay: {
+              delay: 3000,
+              disableOnInteraction: false
+            },
+            // grabCursor: true,
+            setWrapperSize: true,
+            autoHeight: true,
+            uniqueNavElements: true,
+            preventInteractionOnTransition: false,
+            allowSilderPrev: true,
+            allowSilderNext: true,
+            //   scrollbar:'.swiper-scrollbar',//滚动条
+            mousewheelControl: true,
+            observer: true,
+            observeParents: true,
+            debugger: true,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true //允许点击小圆点跳转
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev"
+            },
+            onTransitionStart(swiper) {
+              console.log(swiper);
+            }
           }
         }
       }

@@ -27,6 +27,14 @@ export default new Router({
     {
       path:'/collect',
       component:Collect
+    },
+    {
+      path:'/',  //没有路径的时候，跳转到home
+      redirect:'/home'
+    },
+    {
+      path:'*',//匹配不到的时候，可以跳转到404。这里简单跳转到home
+      redirect:'/home'
     }
   ]
 })

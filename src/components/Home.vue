@@ -6,6 +6,15 @@
         <!--轮播图渲染到页面-->
         <div class="content">
             <Swiper :swiperSlides="sliders"></Swiper>
+            <div class="container">
+              <h3>热门图书</h3>
+              <ul>
+                <li v-for="(hot,index) in hotBook">
+                  <img :src="hot.bookCover" alt=""/>
+                  <b>{{hot.bookName}}</b>
+                </li>
+              </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -13,16 +22,29 @@
     import MHeader from '../base/MHeader.vue';
     /*引入轮播图组件 */
     import Swiper from '../base/Swiper.vue';
-    import {getSliders} from "../api";//api下的index.js，默认不用写全
+    import {getSliders,getHotBooks} from "../api";//api下的index.js，默认不用写全
     export default {
-       async created(){
-          let {data:sliders}= await getSliders();//页面加载完成发送请求
-          this.sliders=sliders;
+        created(){
+          //不要再created中写太多逻辑，要写在methods中
+          this.getSwiper();
+          this.getHot();
         },
         data() {
-            return {sliders:[]}
+            return {
+              sliders:[],
+              hotBook:[]
+            }
         },
-        methods: {},
+        methods: {
+           //获取轮播图
+          async getSwiper(){
+            //接口中对数据进行了处理
+            this.sliders= await getSliders();//页面加载完成发送请求
+           },
+          async getHot(){
+            this.hotBook=await getHotBooks();
+          }
+        },
         computed: {},
         components: {
           MHeader,
@@ -30,4 +52,21 @@
         }
     }
 </script>
-<style scoped></style>
+<style scoped lang="less">
+  h3{color: #999;padding: 5px 0}
+  .container{
+    width: 90%;
+    margin: 0 auto;
+    ul {
+      display: flex;
+      flex-wrap: wrap; /*默认不换行*/
+      padding-bottom: 10px;
+      li {
+        width: 50%;
+        text-align: center;
+        margin: 5px 0;
+        img{width: 100%}
+      }
+    }
+  }
+</style>

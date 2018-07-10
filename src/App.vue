@@ -17,11 +17,9 @@ export default {
 </script>
 <!--这里的style里的样式是公共的-->
 <style>
-   *{margin:0px;padding:0px;}
-   ul,li{list-style:none;}
-   a{text-decoration: none;}
-   input,button{
-     -webkit-appearance:none;
-   }
-   .content{position: fixed;top:40px;width:100%;overflow: auto;bottom:50px;}
+  *{margin: 0;padding: 0}
+  ul,li{list-style: none}
+  a{text-decoration: none}
+  input,button{-webkit-appearance:none;}
+  .content{position: fixed;width: 100%;top: 40px;bottom: 50px;overflow: auto}
 </style>
