@@ -20,4 +20,20 @@ export let getBooks=()=>{return axios.get('/book')};
 export let removeBook=(id)=>{
    return axios.delete(`/book?id=${id}`);
 };
+//获取某一个本书
+export let getBookById=(id)=>{
+   return axios.get(`/book?id=${id}`);
+};
+//编辑书的信息
+/**
+ * @param id
+ * @param data
+ * @returns {AxiosPromise<T>}
+ */
+export let updateBook=(id,data)=>{
+  return axios.put(`/book?id=${id}`,data);
+};
+export let addBook=(data)=>{
+  return axios.post('/book',data);
+};
 

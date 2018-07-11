@@ -80,7 +80,6 @@
     line-height: 36px;
     border: none;
     border-radius: 3px;
-    background-color: #0074d9;
     color: #fff;
     opacity: .9;
     filter: alpha(opacity=90);
