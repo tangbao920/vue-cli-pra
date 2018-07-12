@@ -30,11 +30,11 @@ http.createServer((req,res)=>{
     return res.end(JSON.stringify(sliders));
   }
   if(pathname === '/hot'){
-    read(function (books) {
-      let hot = books.reverse().slice(0,6);
-      res.setHeader('Content-Type','application/json;charset=utf8');
-      res.end(JSON.stringify(hot));
-    });
+      read(function (books) {
+        let hot = books.reverse().slice(0,6);
+        res.setHeader('Content-Type','application/json;charset=utf8');
+        res.end(JSON.stringify(hot));
+      });
     return
   }
   if(pathname === '/book'){ // 对书的增删改查

@@ -10,7 +10,8 @@ export default new Router({
   routes: [
     {
       path: '/home',
-      component:Home
+      component:Home,
+      meta:{keepAlive:true} //路由元参数，默认是false,表示不需要缓存，在页面中通过$route.meta.keepAlive获取
     },
     {
       path: '/list',

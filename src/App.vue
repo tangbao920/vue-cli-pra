@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!--是否页面缓存，获取路由元信息，默认是false-->
+    <keep-alive>
+       <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <!--正常的不需要页面缓存的走下面-->
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
     <Tab></Tab>
   </div>
 </template>
-
 <script>
 //组件使用步骤：1、声明模板 2、引入（在一个页面上的话，则不需要）3、在父级中注册 4、在父级中使用
 import Tab from './base/Tab.vue';
