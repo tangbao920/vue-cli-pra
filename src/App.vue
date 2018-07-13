@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <!--是否页面缓存，获取路由元信息，默认是false-->
+    <transition name="fadeIn">
     <keep-alive>
        <router-view v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
+    </transition>
     <!--正常的不需要页面缓存的走下面-->
+    <transition name="fadeIn">
     <router-view v-if="!$route.meta.keepAlive"></router-view>
+    </transition>
     <Tab></Tab>
   </div>
 </template>
@@ -26,4 +30,14 @@ export default {
   a{text-decoration: none}
   input,button{-webkit-appearance:none;}
   .content{position: fixed;width: 100%;top: 40px;bottom: 50px;overflow: auto}
+  .fadeIn-enter{
+     opacity:0;
+  }
+  .fadeIn-enter-active{
+     transition:all 0.3s linear;
+  }
+  .fadeIn-leave-active{
+     transition:all 0.3s linear;
+     opacity:0;
+  }
 </style>

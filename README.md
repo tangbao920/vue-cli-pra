@@ -27,5 +27,26 @@ npm install less less-loader axios vuex bootstrap --save-dev
 - 在页面中，通过$route.meta.keepAlive来获取，默认是false。对于需要缓存的页面，<router-view>需要嵌套在<keep-alive>中。
 
 ## 路由动画
+- 在标签上嵌套<transition name="fadeIn">，然后再css里写动画效果
 
+## 加载更多
+- 默认每次加载5条信息，前端告诉后台现在从第几条开始
+- 写好服务端server.js的方法
+- 前端的scroll事件，scrollTop+clientHeight+20>scrollHeight时，就去新获取数据。
+
+## 图片懒加载
+- 使用插件vue-lazyload github上有
+
+## coding split 代码分割
+- 组件路径不要写死，写函数异步执行。component:()=>import('组件的绝对路径')
+
+## 代码打包上线
+- npm run build 打包
+- 打包完毕后，代码会打包在dist文件夹。最后只上线一个文件夹，mock。把dist文件夹内打包的内容移动到mock内，
+- 上传到服务器。如果后台是node，可以起一个node服务。node server.js
+
+## mode history
+- 设置路由参数 mode:'history'
+  - 可以让地址去掉#，既好看，又利于seo
+  - 后台需要配置，当直接访问例如：localhost:3000/list时，应该返回一个首页index.html，然后根据路由去匹配响应的页面。
 
