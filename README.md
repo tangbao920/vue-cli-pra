@@ -50,3 +50,17 @@ npm install less less-loader axios vuex bootstrap --save-dev
   - 可以让地址去掉#，既好看，又利于seo
   - 后台需要配置，当直接访问例如：localhost:3000/list时，应该返回一个首页index.html，然后根据路由去匹配响应的页面。
 
+## 每个路由配置不同的title
+- 配置路由参数，meta:{title:'首页'}
+- 配置全局的钩子，在main.js中
+  - /**
+     * from:从哪来
+     * to：到哪去
+     * next:继续
+     */
+    router.beforeEach(function (to,from,next) {
+       //如果这里什么都不写的话，页面就会什么都不显示。这里放置公有逻辑
+       document.title=to.meta.title;
+       next();
+    });
+

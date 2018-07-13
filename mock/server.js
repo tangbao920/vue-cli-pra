@@ -119,6 +119,7 @@ http.createServer((req,res)=>{
   }
   //写静态接口 最后只上线mock文件夹。
 //读取一个路径
+//读取打包后的mock文件夹内的index.html及相应的js
   fs.stat('.'+pathname,function (err,stats) {
     if(err){
       //上面/page接口由于没有return，导致请求接口的时候来到了这里，err了。
