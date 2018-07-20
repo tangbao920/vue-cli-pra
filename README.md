@@ -59,8 +59,21 @@ npm install less less-loader axios vuex bootstrap --save-dev
      * next:继续
      */
     router.beforeEach(function (to,from,next) {
-       //如果这里什么都不写的话，页面就会什么都不显示。这里放置公有逻辑
-       document.title=to.meta.title;
-       next();
+       //在进入路由之前，每一次都会执行此方法，全局钩子。
+          //如果这里什么都不写的话，页面就会什么都不显示。
+         // 这里放置公有逻辑
+          document.title=to.meta.title;
+          //拦截的功能
+          if(to.path==='/list'){
+             next({path:'/add'});
+          }
+          else{
+             next();
+          }
     });
+
+## vuex
+- 平级组件交互，找共同的父级解决，跨组件交互，eventBus混乱
+- vuex 主要借鉴了flux redux,vuex只能在vue中使用
+- vuex适用于大型项目，主要是状态管理，将数据统一管理。
 

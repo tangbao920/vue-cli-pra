@@ -17,17 +17,21 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
  * next:继续
  */
 router.beforeEach(function (to,from,next) {
-   //如果这里什么都不写的话，页面就会什么都不显示。这里放置公有逻辑
+   //在进入路由之前，每一次都会执行此方法，全局钩子。
+   //如果这里什么都不写的话，页面就会什么都不显示。
+  // 这里放置公有逻辑
    document.title=to.meta.title;
-   if(to.path==='/list'){
+   //拦截的功能
+   /*if(to.path==='/list'){
       next({path:'/add'});
    }else{
       next();
-   }
+   }*/
+   next();
 });
 new Vue({
   el: '#app',
-  router,
+  router,//将router和vue实例关联起来，这样每个组件都有一个this.$route属性
   components: { App },
   template: '<App/>'
 })
