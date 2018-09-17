@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL="http://localhost:5000";//设置默认的请求路径，上线后这里也不需要了。
+axios.defaults.baseURL="http://localhost:3001";//设置默认的请求路径，上线后这里也不需要了。
 //获取轮播图数据,返回一个promise对象
 //拦截器
 axios.interceptors.response.use((res)=>{

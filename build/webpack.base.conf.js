@@ -11,7 +11,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     //入口文件，默认是src文件夹下的main.js。可以修改
-    app: './src1/main.js'
+    app: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
